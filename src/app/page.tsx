@@ -1,5 +1,4 @@
-"use client"
-import { Copy } from "lucide-react"
+
 
 import * as React from "react"
 import { Button } from "@/components/ui/button"
@@ -13,23 +12,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import Themes from '@/components/theme-button';
 import { useState } from "react"
 import { UrlShortnerService } from "@/services/UrlShortnerService"
+import Input1 from "@/components/Input1"
+import Input2 from "@/components/Input2"
 
 export default function DialogCloseButton() {
 
-const  handlePostRequest = async ({originalLink}: {originalLink : string}) => {
-  console.log('original Link',originalLink);
-  const shortnerService = new UrlShortnerService();
-  shortnerService.shortenUrl(originalLink); 
-}
-
-  const [originalLink, setOriginalLink] = useState('');
-  const [shortenLink, setShortenLink] = useState('');
+  /* const  handlePostRequest = async ({originalLink}: {originalLink : string}) => {
+    console.log('original Link',originalLink);
+    const shortnerService = new UrlShortnerService();
+    shortnerService.shortenUrl(originalLink); 
+  }
   
+    const [originalLink, setOriginalLink] = useState('');
+    const [shortenLink, setShortenLink] = useState(''); */
+
   return (
     <>
       < Themes />
@@ -44,46 +43,13 @@ const  handlePostRequest = async ({originalLink}: {originalLink : string}) => {
               Anyone who has this link will be able to view this.
             </DialogDescription>
           </DialogHeader>
+
           <div className="flex items-center space-x-2">
-
-            <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-
-              <Input
-                id="link"
-                value={originalLink}
-                onChange={(e) => setOriginalLink(e.target.value)}
-              />
-            </div>
-
-            <Button type="submit" size="sm" className="px-3" onClick={(e)=> handlePostRequest({originalLink})}>
-              <span className="sr-only">shoot</span>
-            </Button>
-
-
-
+            <Input1 />
           </div>
 
           <div className="flex items-center space-x-2">
-
-            <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-              <Input
-                id="link"
-                value={shortenLink}
-              //onChange={(e) => setOriginalLink(e.target.value)}
-              />
-            </div>
-
-            <Button type="submit" size="sm" className="px-3">
-              <span className="sr-only">Copy</span>
-              <Copy className="h-4 w-4" />
-            </Button>
-
+            <Input2 />
           </div>
 
           <DialogFooter className="sm:justify-start">
