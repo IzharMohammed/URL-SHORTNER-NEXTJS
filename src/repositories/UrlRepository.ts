@@ -8,6 +8,7 @@ export default class UrlRepository {
     constructor() {
         connectDB();
         this.urlModel = Url;
+        console.log('sTRICT CHECK',this.urlModel);
     }
 
     // Enabling the lean option tells Mongoose to skip instantiating a full Mongoose document and just give you the POJO(plain old JavaScript objects)
