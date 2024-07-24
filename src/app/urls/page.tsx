@@ -1,4 +1,4 @@
-
+import { TableDemo } from "@/components/Table";
 async function getAllUrls() {
     console.log('bhaiiii aajaaa', process.env);
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/Urls`);
@@ -24,13 +24,24 @@ export default async function urlList() {
 
     return (
         <>
-            <ul>
+        
+                 <table className="min-w-full ">
+            <thead>
+                <tr>
+                    <th className="py-2 px-4 border-b-2 border-gray-300 text-left">Original URL</th>
+                    <th className="py-2 px-4 border-b-2 border-gray-300 text-left">Short URL</th>
+                </tr>
+            </thead>
+            <tbody>
+               
                 {
                     urls.urls && urls.urls.map((list : any) => (
-                        <li key={list.id}>{list. shortUrl}</li>
+                        <TableDemo  originalUrl={list.originalUrl} shortUrl={list.shortUrl}/>
                     ))
                 }
-            </ul>
+               
+            </tbody>
+            </table>
 
         </>
     )
