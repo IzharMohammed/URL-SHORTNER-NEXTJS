@@ -1,3 +1,4 @@
+"use server"
 import { UrlShortnerService } from "@/services/UrlShortnerService";
 import { NextResponse } from "next/server";
 

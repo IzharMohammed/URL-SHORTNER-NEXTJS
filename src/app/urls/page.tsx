@@ -1,6 +1,6 @@
 
 async function getAllUrls() {
-    console.log(process.env.NEXT_PUBLIC_BASE_URL);
+    console.log('bhaiiii aajaaa', process.env);
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/Urls`);
     return response.json();
 }
@@ -9,6 +9,8 @@ export default async function urlList() {
     let urls;
     try {
         urls = await getAllUrls();
+        console.log(urls);
+        
     } catch (error) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -20,7 +22,19 @@ export default async function urlList() {
         )
     }
 
+    return (
+        <>
+            <ul>
+                {
+                    urls.urls && urls.urls.map((list : any) => (
+                        <li key={list.id}>{list. shortUrl}</li>
+                    ))
+                }
+            </ul>
+
+        </>
+    )
 
 
-    
+
 }

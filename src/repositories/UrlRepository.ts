@@ -20,7 +20,7 @@ export default class UrlRepository {
     }
 
     async getUrlByOriginalUrl(originalUrl: string): Promise<IUrl | null> {
-        return await this.urlModel.findOne({ originalUrl }).lean();
+        return await this.urlModel.findOne({originalUrl}).lean();
     }
 
     async getAllUrls(): Promise<IUrl | null> {

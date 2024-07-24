@@ -2,7 +2,6 @@
 import { Copy } from "lucide-react"
 
 import * as React from "react"
-import { BiRightArrowAlt } from "react-icons/bi";
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -18,11 +17,19 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Themes from '@/components/theme-button';
 import { useState } from "react"
+import { UrlShortnerService } from "@/services/UrlShortnerService"
 
 export default function DialogCloseButton() {
 
+const  handlePostRequest = async ({originalLink}: {originalLink : string}) => {
+  console.log('original Link',originalLink);
+  const shortnerService = new UrlShortnerService();
+  shortnerService.shortenUrl(originalLink); 
+}
+
   const [originalLink, setOriginalLink] = useState('');
-  const [shortenLink, setShortenLink] = useState('')
+  const [shortenLink, setShortenLink] = useState('');
+  
   return (
     <>
       < Themes />
@@ -43,6 +50,7 @@ export default function DialogCloseButton() {
               <Label htmlFor="link" className="sr-only">
                 Link
               </Label>
+
               <Input
                 id="link"
                 value={originalLink}
@@ -50,9 +58,8 @@ export default function DialogCloseButton() {
               />
             </div>
 
-            <Button type="submit" size="sm" className="px-3">
+            <Button type="submit" size="sm" className="px-3" onClick={(e)=> handlePostRequest({originalLink})}>
               <span className="sr-only">shoot</span>
-              <BiRightArrowAlt />
             </Button>
 
 
@@ -68,7 +75,7 @@ export default function DialogCloseButton() {
               <Input
                 id="link"
                 value={shortenLink}
-                //onChange={(e) => setOriginalLink(e.target.value)}
+              //onChange={(e) => setOriginalLink(e.target.value)}
               />
             </div>
 

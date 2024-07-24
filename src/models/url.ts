@@ -31,6 +31,6 @@ export interface IUrl extends Document {
 // mongoose.models: This is a Mongoose object that stores models that have already been created. When a model is created, it is stored in mongoose.models.
 // Create the Mongoose model for the URL schema
 // If the Url model already exists, use it; otherwise, create a new model
-const Url: Model<IUrl> = mongoose.models.Url || mongoose.model<IUrl>('Url', urlSchema);
+const Url = mongoose.model('Url', urlSchema);
 
 export default Url;
